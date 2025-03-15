@@ -41,8 +41,6 @@ As this plugin uses some AI models, it is recommended to use a virtual environme
 5. Make a note of the location of your virtual environment folder's location. You will need this to configure the plugin in GIMP.
 
 
-
-
 3.  **Copy the Plugin to GIMP**:
 
     -   Copy the `remove-background` folder to your GIMP plugins folder:
@@ -72,6 +70,20 @@ Plugin Options
 | **Alpha Matting**            | Refine the edges of the background removal using alpha matting.        |
 | **Alpha Matting Erode Size** | Set the size for edge refinement when using alpha matting.             |
 | **Process all Open Images**  | Apply the plugin to all open images in GIMP.                           | * |
+
+Model description
+-----------------
+The following models are available for background removal, these are from the rembg library:
+
+- **u2net**: A pre-trained model for general use cases.
+- **u2netp**: A lightweight version of u2net model.
+- **u2net_human_seg**: A pre-trained model for human segmentation.
+- **u2net_cloth_seg**: A pre-trained model for Cloths Parsing from human portrait. Here clothes are parsed into 3 category: Upper body, Lower body and Full body.
+- **silueta**: Same as u2net but the size is reduced to 43Mb.
+- **isnet-general-use**: A new pre-trained model for general use cases.
+- **isnet-anime**: A high-accuracy segmentation for anime character.
+- **sam**: A pre-trained model for any use cases.
+
 
 Example Workflow
 ----------------
