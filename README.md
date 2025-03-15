@@ -81,6 +81,13 @@ Example Workflow
 2.  Select **AI Remove Background** from the Python-Fu menu.
 3.  Run the plugin and watch as the background is removed and the image is processed.
 
+Troubleshooting
+---------------
+If the plugin doesn't load in gimp, ensure that the plugin file is executable. You can do this by running the following command in the terminal:
+```bash
+chmod +x /path/to/gimp-plugin/remove-background.py
+```
+
 Contributing
 ------------
 
