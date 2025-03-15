@@ -66,13 +66,12 @@ Usage
 Plugin Options
 --------------
 
-| Option | Description |
-| ------ | ----------- |
-
-| **Model** | Select from different AI models (e.g., `u2net`, `sam`, `isnet-anime`). |
-| **Alpha Matting** | Refine the edges of the background removal using alpha matting. |
-| **Alpha Matting Erode Size** | Set the size for edge refinement when using alpha matting. |
-| **Process all Open Images** | Apply the plugin to all open images in GIMP. |
+| Option                       | Description                                                            |
+| ---------------------------- | ---------------------------------------------------------------------- |
+| **Model**                    | Select from different AI models (e.g., `u2net`, `sam`, `isnet-anime`). |
+| **Alpha Matting**            | Refine the edges of the background removal using alpha matting.        |
+| **Alpha Matting Erode Size** | Set the size for edge refinement when using alpha matting.             |
+| **Process all Open Images**  | Apply the plugin to all open images in GIMP.                           | * |
 
 Example Workflow
 ----------------
