@@ -1,13 +1,12 @@
 # AI Remove Background GIMP Plugin
 
-This GIMP plugin allows users to remove image backgrounds using AI-powered tools like [rembg](https://github.com/danielgatis/rembg). The plugin integrates with GIMP to offer a simple way to remove backgrounds, optionally apply the result as a mask, flatten the image, and resize the canvas to make the image square. It can process a single image or all open images in GIMP.
+This GIMP plugin allows users to remove image backgrounds using AI-powered tools like [rembg](https://github.com/danielgatis/rembg). The plugin integrates with GIMP to offer a simple way to remove backgrounds. It can process a single image or all open images in GIMP.
+
+As this plugin uses some AI models, it is recommended to use a virtual environment to install all the ML dependencies to avoid conflicts with other Python packages.
 
 ## Features
 
 - **AI-Powered Background Removal:** Removes the background using the `rembg` tool, an AI-powered background removal library.
-- **Mask Option:** Choose to apply the background removal as a non-destructive layer mask.
-- **Make Square Option:** Optionally resize the canvas to make the image square by extending the shorter side to match the longest side.
-- **Flatten Image:** Automatically flatten the image after processing, merging visible layers and removing any non-visible ones.
 - **Batch Process:** Process all open images in GIMP with a single click.
 
 ## Requirements
@@ -21,44 +20,58 @@ This GIMP plugin allows users to remove image backgrounds using AI-powered tools
 
 1. **Clone or Download** this repository.
    ```bash
-   git clone https://github.com/your-username/ai-remove-bg-gimp-plugin.git
-Install rembg in your Python 3 environment.
+   git clone https://github.com/dfourie/gimp-rembg-plugin.git
 
-1.  **Install `rembg`** in your Python 3 environment.
+2. Make a virtual environment somewhere and install the required packages.
+   ```bash
+   python3 -m venv gimp-plugin-env
+   source venv/bin/activate
+   ```
+3. Install the onyx runtime according to this guide:
+   https://onnxruntime.ai/getting-started
 
-     ```bash
-    pip install rembg[cli]
+   Typically you will install something like:
+   ```
+    pip install onnxruntime
+   ```
+4. Once onyx runtime is installed, install the rembg package:
+   ```bash
+   pip install "rembg[cli]"
+   ```
+5. Make a note of the location of your virtual environment folder's location. You will need this to configure the plugin in GIMP.
 
-2.  **Copy the Plugin to GIMP**:
 
-    -   Move the `remove_background.py` file to your GIMP plugins folder:
+
+
+3.  **Copy the Plugin to GIMP**:
+
+    -   Copy the `remove-background` folder to your GIMP plugins folder:
         -   **Windows:** `C:\Users\YourUserName\AppData\Roaming\GIMP\2.10\plug-ins`
         -   **Linux:** `/home/YourUserName/.config/GIMP/2.10/plug-ins`
-3.  **Restart GIMP** to load the plugin.
+        -   **macOS:** `/Users/YourUserName/Library/Application Support/GIMP/2.10/plug-ins`
+4.  **Restart GIMP** to load the plugin.
 
 Usage
 -----
 
 1.  **Open GIMP** and load an image.
 2.  Go to **Python-Fu > AI Remove Background...**.
-3.  Configure the options as per your needs:
-    -   **Use as Mask:** Apply the background removal as a non-destructive mask.
+3.  Set the virtual environment path to the one you created earlier.
+4.  Configure the options as per your needs:
     -   **Model:** Choose which AI model to use for background removal.
     -   **Alpha Matting:** Enable alpha matting for smoother edges.
-    -   **Make Square:** Optionally make the canvas square.
     -   **Process all Open Images:** Process all open images in GIMP in batch mode.
-4.  Click **OK** to run the plugin.
+5.  Click **OK** to run the plugin.
 
 Plugin Options
 --------------
 
 | Option | Description |
-| --- | --- |
-| **Use as Mask** | Apply the background removal as a non-destructive mask on the current layer. |
+| ------ | ----------- |
+
 | **Model** | Select from different AI models (e.g., `u2net`, `sam`, `isnet-anime`). |
 | **Alpha Matting** | Refine the edges of the background removal using alpha matting. |
 | **Alpha Matting Erode Size** | Set the size for edge refinement when using alpha matting. |
-| **Make Square** | Resize the canvas to make the image square by adjusting the shortest side. |
 | **Process all Open Images** | Apply the plugin to all open images in GIMP. |
 
 Example Workflow
@@ -66,8 +79,7 @@ Example Workflow
 
 1.  Open an image in GIMP that you want to remove the background from.
 2.  Select **AI Remove Background** from the Python-Fu menu.
-3.  Choose to apply the removal as a mask or flatten the image, and whether to resize the image to be square.
-4.  Run the plugin and watch as the background is removed and the image is processed.
+3.  Run the plugin and watch as the background is removed and the image is processed.
 
 Contributing
 ------------
